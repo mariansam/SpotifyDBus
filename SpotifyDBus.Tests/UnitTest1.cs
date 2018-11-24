@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using SpotifyDBus;
 using System.Threading.Tasks;
+using System;
 
 namespace SpotifyDBus.Tests
 {
@@ -12,13 +13,6 @@ namespace SpotifyDBus.Tests
         public void Setup()
         {
             s = new Spotify();
-        }
-
-        [Test]
-        public async Task PauseTest()
-        {
-            await s.PauseAsync();
-            Assert.Pass();
         }
     }
 }

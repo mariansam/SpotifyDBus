@@ -25,5 +25,51 @@ namespace SpotifyDBus
         public async Task NextAsync() => await proxy.NextAsync();
 
         
+
+        public double Volume
+        {
+            get => proxy.GetVolumeAsync().Result;
+
+            set => proxy.SetVolumeAsync(value);
+        }
+
+        public bool Shuffle
+        {
+            get => proxy.GetShuffleAsync().Result;
+
+            set => proxy.SetShuffleAsync(value);
+        }
+
+        public PlaybackStatus PlaybackStatus
+        {
+            get
+            {
+                string status = proxy.GetPlaybackStatusAsync().Result;
+
+                if (status == "Playing")
+                    return PlaybackStatus.Playing;
+                else if (status == "Paused")
+                    return PlaybackStatus.Paused;
+                else
+                    return PlaybackStatus.Stopped;
+            }
+        }
+
+        public LoopStatus LoopStatus
+        {
+            get
+            {
+                string status = proxy.GetLoopStatusAsync().Result;
+
+                if (status == "None")
+                    return LoopStatus.None;
+                else if (status == "Track")
+                    return LoopStatus.Track;
+                else
+                    return LoopStatus.Playlist;
+            }
+
+            set => proxy.SetLoopStatusAsync(value.ToString());
+        }
     }
 }

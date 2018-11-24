@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Tmds.DBus;
+using SpotifyDBus;
 
 [assembly: InternalsVisibleTo(Tmds.DBus.Connection.DynamicAssemblyName)]
 namespace spotify.DBus
