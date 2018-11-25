@@ -2,6 +2,7 @@
 using spotify.DBus;
 using Tmds.DBus;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SpotifyDBus
 {
@@ -24,7 +25,7 @@ namespace SpotifyDBus
 
         public async Task NextAsync() => await proxy.NextAsync();
 
-        
+        public async Task SeekAsync(long offset) => await proxy.SeekAsync(offset);
 
         public double Volume
         {
@@ -70,6 +71,11 @@ namespace SpotifyDBus
             }
 
             set => proxy.SetLoopStatusAsync(value.ToString());
+        }
+
+        public Track Track
+        {
+            get => new Track(proxy.GetMetadataAsync().Result);
         }
     }
 }
