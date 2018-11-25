@@ -2,7 +2,6 @@
 using spotify.DBus;
 using Tmds.DBus;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace SpotifyDBus
 {
