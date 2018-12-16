@@ -9,9 +9,12 @@ namespace SpotifyDBus
     {
         IPlayer proxy;
 
-        public Spotify()
+        public Spotify() : this("org.mpris.MediaPlayer2.spotify")
+        { }
+
+        public Spotify(string service)
         {
-            proxy = Connection.Session.CreateProxy<IPlayer>("org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2");
+            proxy = Connection.Session.CreateProxy<IPlayer>(service, "/org/mpris/MediaPlayer2");
         }
 
         public async Task PauseAsync() => await proxy.PauseAsync();
